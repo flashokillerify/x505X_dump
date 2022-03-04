@@ -1,0 +1,14 @@
+service vendor.fingerprint /vendor/bin/fingerprint
+	class core
+    user system
+    group system
+    oneshot
+
+on property:vendor.build.fingerprint=1
+    setprop ro.vendor.build.fingerprint ${ro.vendor.build.fingerprint_eea}
+
+on property:vendor.build.fingerprint=2
+    setprop ro.vendor.build.fingerprint ${ro.vendor.build.fingerprint_ru}
+
+on property:vendor.build.fingerprint=0
+    setprop ro.vendor.build.fingerprint ${ro.vendor.build.fingerprint_normal}
